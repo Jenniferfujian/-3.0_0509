@@ -1,7 +1,7 @@
 <!--pages/mine/mine.wxml-->
-<view class="container">
-  <!--头像部分 -->
-  <!-- <view class="personal_info ">
+<!-- <view class="container"> -->
+<!--头像部分 -->
+<!-- <view class="personal_info ">
     <image class='bg' src='../../images/mine-bg1.png'></image>
     <view class="personal_info_container">
       <view>
@@ -22,8 +22,8 @@
   </view> -->
 
 
-  <!-- 下半部分 -->
-  <!-- <view class="btn">
+<!-- 下半部分 -->
+<!-- <view class="btn">
 
     <view class="btn_items page_flex" bindtap="zhuYe">
       <image class='mine-img-left' src="../../images/mine-zhuye.png" />
@@ -65,8 +65,8 @@
       <image class='mine-img-right' src='../../images/mine-jiantou.png'></image>
     </view>
   </view> -->
-
-  <view class='mine-zhuye-container'bindtap="zhuYe">
+<!-- 新的我的页面 -->
+<!-- <view class='mine-zhuye-container'bindtap="zhuYe">
     <view class='image-jianjie'>
       <image class='mine-zhuye-image' src='/images/3.png'></image>
       <view class='mine-info'>
@@ -77,9 +77,9 @@
     <view>
       <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
     </view>
-  </view>
-  <!-- 设置 -->
-  <view class='mine-zhuye-setting' bindtap="edit">
+  </view> -->
+<!-- 设置 -->
+<!-- <view class='mine-zhuye-setting' bindtap="edit">
     <view class='item-setting'>
       <image class='mine-zhuye-ico' src='/images/setting.png'></image>
       <text class='mine-info-tittle'>设置个人信息</text>
@@ -87,9 +87,9 @@
     <view>
       <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
     </view>
-  </view>
-  <!-- 设置个人信息 -->
-  <view class='mine-zhuye-ma' bindtap="erCode">
+  </view> -->
+<!-- 设置个人信息 -->
+<!-- <view class='mine-zhuye-ma' bindtap="erCode">
     <view class='item-setting'>
       <image class='mine-zhuye-ico' src='/images/erweima-ico2.png'></image>
       <text class='mine-info-tittle'>我的作品码</text>
@@ -119,4 +119,10 @@
   </view>
 
   <loading hidden="{{hiddenLoading}}">加载中</loading>
+</view> -->
+<view class='sign-in'>
+  <view>
+    <text class='sign-in-text'>尚未登录</text>
+  </view>
+  <button class='sign-in-button'>登录</button>
 </view>

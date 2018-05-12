@@ -109,10 +109,10 @@
 
 </view>
 <!-- <view class='guanzhu-yuyue'>
-  <view class='guanzhu'>
+  <button class='guanzhu'>
     <image src='/images/guanzhu.png'></image>
     <text>关注</text>
-  </view>
+  </button>
 </view>  -->
 <view class='guanzhu-yuyue'>
   <!-- <view class='guanzhu'>
