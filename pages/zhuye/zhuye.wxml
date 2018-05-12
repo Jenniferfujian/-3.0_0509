@@ -1,6 +1,6 @@
-<!--头像部分 -->
+<!--头像 -->
 <view>
-  <!-- <view class="personal_info ">
+  <!-- <view class="personal_info ">+
     <view>
 
       <image class='bg' src='../../images/mine-bg1.png'>
@@ -73,6 +73,10 @@
           <text class='zuopin-name'>作品集</text>
         </view>
         <view>
+          <text class='zuopin-num'>0</text>
+          <text class='zuopin-name'>粉丝</text>
+        </view>
+        <view>
           <text class='zuopin-num'>{{redu}}</text>
           <text class='zuopin-name'>点赞</text>
         </view>
@@ -111,12 +115,23 @@
   </view>
 </view>  -->
 <view class='guanzhu-yuyue'>
-  <view class='guanzhu'>
+  <!-- <view class='guanzhu'>
+  <view>
     <image src='/images/guanzhu2.png'></image>
+     </view>
     <text>关注</text>
-  </view>
-   <view class='guanzhu'>
-    <image src='/images/liuyan1.png'></image>
+  </view> -->
+  <!-- 已关注 -->
+  <button class='guanzhu'>
+    <view>
+      <image src='/images/yiguanzhu.png'></image>
+    </view>
+    <text>已关注</text>
+  </button>
+  <button class='guanzhu'>
+    <view>
+      <image src='/images/liuyan1.png'></image>
+    </view>
     <text>预约</text>
-  </view> 
+  </button>
 </view>
