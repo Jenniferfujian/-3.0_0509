@@ -1,0 +1,122 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+  <!--头像部分 -->
+  <!-- <view class="personal_info ">
+    <image class='bg' src='../../images/mine-bg1.png'></image>
+    <view class="personal_info_container">
+      <view>
+        <view class='personal-info-img'>
+          <view class="personal_info_v1">
+            <image mode='aspectFill' src="{{userInfo.avatarUrl}}" />
+          </view>
+        </view>
+        <view class='personal_info_name'>
+          <text>{{userInfo.nickName}}</text>
+        </view>
+        <view class='personal_info_jianjie'>
+          <text wx:if="{{userInfo.title==null}}"></text>
+          <text wx:else>{{userInfo.title}}</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+
+  <!-- 下半部分 -->
+  <!-- <view class="btn">
+
+    <view class="btn_items page_flex" bindtap="zhuYe">
+      <image class='mine-img-left' src="../../images/mine-zhuye.png" />
+      <view class="btn_items_text">我的主页</view>
+      <view class="btn_items_blank"></view>
+      <image class='mine-img-right' src='../../images/mine-jiantou.png'></image>
+    </view>
+
+
+    <view class="btn_items page_flex">
+      <image class='mine-img-left' src="../../images/mine-yuyue.png" />
+      <view class="btn_items_text">开启预约定制</view>
+      <view class="btn_items_blank_jieshou"></view>
+      <view class="switch {{isOn ? 'toggle-on' : 'toggle-off'}}" style="background-color:{{isOn ? '#ff6e55' : '#ddd'}}" bindtap="tapSwitch">
+      </view>
+    </view>
+
+    <view class="btn_items page_flex" bindtap="erCode">
+      <image class='mine-img-left' src="../../images/mine-zuopinma.png" />
+      <view class="btn_items_text">我的作品码</view>
+      <view class="btn_items_blank-1"></view>
+      <image class='mine-img-rl' src='../../images/erweima.png'></image>
+      <image class='mine-img-right' src='../../images/mine-jiantou.png'></image>
+    </view>
+
+
+
+    <view class="btn_items page_flex" bindtap="edit">
+      <image class='mine-img-left' src="../../images/mine-shezhi.png" />
+      <view class="btn_items_text">设置个人信息</view>
+      <view class="btn_items_blank"></view>
+      <image class='mine-img-right' src='../../images/mine-jiantou.png'></image>
+    </view>
+
+    <view wx:if='{{isOn}}' class="btn_items page_flex" bindtap="yveWo">
+      <image class='mine-img-left' src="../../images/mine-yuyuewo.png" />
+      <view class="btn_items_text">预约我的</view>
+      <view class="btn_items_blank"></view>
+      <image class='mine-img-right' src='../../images/mine-jiantou.png'></image>
+    </view>
+  </view> -->
+
+  <view class='mine-zhuye-container'bindtap="zhuYe">
+    <view class='image-jianjie'>
+      <image class='mine-zhuye-image' src='/images/3.png'></image>
+      <view class='mine-info'>
+        <text class='mine-info-name'>白武广是猪</text>
+        <text class='mine-info-jianjie'>很会吃的猪</text>
+      </view>
+    </view>
+    <view>
+      <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
+    </view>
+  </view>
+  <!-- 设置 -->
+  <view class='mine-zhuye-setting' bindtap="edit">
+    <view class='item-setting'>
+      <image class='mine-zhuye-ico' src='/images/setting.png'></image>
+      <text class='mine-info-tittle'>设置个人信息</text>
+    </view>
+    <view>
+      <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
+    </view>
+  </view>
+  <!-- 设置个人信息 -->
+  <view class='mine-zhuye-ma' bindtap="erCode">
+    <view class='item-setting'>
+      <image class='mine-zhuye-ico' src='/images/erweima-ico2.png'></image>
+      <text class='mine-info-tittle'>我的作品码</text>
+    </view>
+    <view>
+      <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
+    </view>
+  </view>
+
+  <view class='mine-zhuye-other'>
+    <view class='item-setting'>
+      <image class='mine-zhuye-ico' src='/images/mine-shezhi.png'></image>
+      <text class='mine-info-tittle'>预约设置</text>
+    </view>
+    <view>
+      <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
+    </view>
+  </view>
+    <view class='mine-zhuye-other'bindtap="yveWo">
+    <view class='item-setting'>
+      <image class='mine-zhuye-ico' src='/images/mine-yuyuewo.png'></image>
+      <text class='mine-info-tittle'>预约我的</text>
+    </view>
+    <view>
+      <image class='mine-jiantou' src='/images/mine-jiantou.png'></image>
+    </view>
+  </view>
+
+  <loading hidden="{{hiddenLoading}}">加载中</loading>
+</view>
