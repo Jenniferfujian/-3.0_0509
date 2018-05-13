@@ -9,7 +9,8 @@
     "pages/zydetail/zydetail",
     "pages/ercode/ercode",
     "pages/dianzanimg/dianzanimg",
-    "pages/infoedit/infoedit"
+    "pages/infoedit/infoedit",
+    "pages/yuyuesetting/yuyuesetting"
   ],
   "window": {
     "backgroundTextStyle": "light",

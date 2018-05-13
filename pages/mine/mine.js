@@ -48,7 +48,6 @@ Page({
     var userInfo = this.data.userInfo
     wx.redirectTo({
       url: '../infoedit/infoedit?nickName=' + userInfo.nickName + '&title=' + userInfo.title + '&uid=' + userInfo.id
-
       ,
     })
   },
@@ -62,6 +61,11 @@ Page({
   yveWo: function () {
     wx.navigateTo({
       url: '../yvewo/yvewo',
+    })
+  },
+  yuyuesetting:function(){
+    wx.navigateTo({
+      url: '../yuyuesetting/yuyuesetting',
     })
   },
 
