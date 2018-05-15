@@ -9,36 +9,31 @@ Page({
     zpCount: 0,
     redu:0,
     yorderCount: 0,
-    userModel: {
+    authorModel: {
       avatarUrl: "../../images/login.png",
       ison:1
     }
   },
 
-  onLoad: function (options) {
+  onLoad: function (options) {//主页页面变成了只能通过导航进入
     var that = this;
-    var uid=options.uid;
-    if (!uid) {
-      app.globalData.isAuthor=true;
-      zhuYe.info((res) => {
-        var uid=res.uid;
-        this.setData({
-          uid:uid
-        })
-        that.zhuYeData(uid);
-      })
-    }
-    else {//通过转发，导航等进入
+    var authorID=options.uid;
       this.setData({
-        uid: uid
+        authorID:authorID 
       })
       zhuYe.info((res)=>{//判断当前用户是不是该页面的作者
-        if(uid==res.uid){
+        if(authorID==res.uid){
           app.globalData.isAuthor = true;
         }
       }) 
-      that.zhuYeData(uid);
-    }
+      zhuYe.zhuYeInitial(authorID,(res)=>{
+        that.setData({
+          authorModel:res.authorModel,
+          zpCount:res.zpCount, 
+          followStatus:res.followStatus
+        })
+      });
+      that.zhuYeData(authorID);
   },
   
   onShow:function(){
@@ -51,43 +46,21 @@ Page({
       })
      });
     }
-    if (app.globalData.loginStatus && app.globalData.isAuthor && app.globalData.zanEncrypt){
-      var that=this;
-      that.setData({
-        page: 1,
-      })
-      var that=this;
-      zhuYe.info((res) => {
-        var uid = res.uid;
-        that.zhuYeData(uid);
-      })
-    }
   },
 
-
   zhuYeData:function(uid){
-    zhuYe.zhuYe(uid, pageSize, this.data.page, (res) => {
+    zhuYe.zhuYeAlbum(uid, pageSize, this.data.page, (res) => {
       console.log(res);
       this.setData({
-        yorderCount: res.yorderCount,
         albumModels: res.albumModels,
         page: this.data.page + 1,
         hasMore: res.hasMore,
-        uid:uid,
-        // hiddenLoading: true,
-        zpCount: res.zpCount,
       })
-      if (res.userModel) {
-        this.setData({
-          userModel: res.userModel,
-          redu:res.userModel.redu
-        })
-      }
     })
   },
 
   onShareAppMessage: function () {//设置分享页面的信息
-    var userName = this.data.userModel.nickName
+    var userName = this.data.authorModel.nickName
     var uid = this.data.uid;
     return {
       title: userName + '的作品集',
@@ -97,7 +70,7 @@ Page({
 
   albumDetail: function (e) {//点击进入作品详情页
     var id = e.currentTarget.dataset.id;
-    var userName = this.data.userModel.nickName;
+    var userName = this.data.authorModel.nickName;
     wx.navigateTo({
       url: '../zydetail/zydetail?albumID=' + id + '&userName=' + userName+'&authorID='+this.data.uid,
     })
@@ -118,6 +91,30 @@ Page({
       })
     });
   },
+
+  
+  follow:function(event){
+    var that = this;
+    if (app.globalData.isAuthor){
+      var followStatus = !that.data.followStatus; 
+      that.setData({
+        followStatus:followStatus
+      })
+    }else{
+    var authorID=this.data.authorID;
+    this.wxGetUserInfo(event,(res)=> {
+      zhuYe.followChange(authorID,(res)=>{
+        var followStatus=!that.data.followStatus;
+        var authorModel = that.data.authorModel;
+        authorModel.fans=followStatus?authorModel.fans+1:authorModel.fans-1;
+        that.setData({
+          authorModel:authorModel,
+          followStatus:followStatus
+        })
+      });
+     }) 
+    }
+  }, 
 
   onReachBottom() {
     if (this.data.hasMore == true) {
@@ -145,7 +142,7 @@ Page({
       url: '../ercode/ercode?uid=' + this.data.uid
     })
   },
-
+  
   wxGetUserInfo:function(event,callBack){
     if (!event.detail.userInfo) {
       wx.showModal({
@@ -166,8 +163,8 @@ Page({
       zhuYe.encrypt(event.detail.encryptedData, event.detail.iv,
         (res) => {
           console.log(app.globalData.loginStatus + '' + app.globalData.isAuthor )
+          var uid = res.user.id;
           if (app.globalData.isAuthor ) {
-            var uid = res.user.id;
             that.setData({
               page: 1,
             })
@@ -178,13 +175,16 @@ Page({
             wx.setStorageSync('loginStatus', res.loginStatus);
             app.globalData.loginStatus = wx.getStorageSync('loginStatus');
           }
+          callBack && callBack();
         },
         (res) => {
           console.log(res);
         }
-      )
-     }
-    callBack && callBack(event.detail.userInfo.nickName);
+       )
+      }
+      else{
+        callBack && callBack(event.detail.userInfo.nickName);
+      }
     }
   }
 })

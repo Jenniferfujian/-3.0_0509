@@ -1,68 +1,21 @@
-<!--头像部分 -->
+<!--头像 -->
 <view>
-  <!-- <view class="personal_info ">
-    <view>
-
-      <image class='bg' src='../../images/mine-bg1.png'>
-
-        <view class="personal_info_v1 center">
-          <image mode='aspectFill' src="{{userModel.avatarUrl}}" />
-        </view>
-
-        <view class='user-info-up'>
-
-          <view class='user-login-con' wx:if="{{uid==1}}">
-            <button class='user-login' open-type='getUserInfo' bindgetuserinfo='login'>登录</button>
-          </view>
-          <view wx:else class='user-info-detail'>
-            <view class="personal_info_name center">
-              <view class='info_name_con'>
-                <text>{{userModel.nickName}}</text>
-              </view>
-              <image class='personal_info_ma' bindtap='erWeiCode' src='/images/erweima-ico1.png'></image>
-            </view>
-            <view class='personal_info_edit center' wx:if="{{userModel.title!=null}}">
-              <text>{{userModel.title}}</text>
-            </view>
-            <view class='personal_info_edit center' wx:else>
-              <text></text>
-            </view>
-          </view>
-
-          <view class='zuopin-yuyue'>
-            <view class='zuopin'>
-              <view class='zuopin-num'>{{zpCount}}</view>
-              <view class='zuopin-txt'>作品</view>
-            </view>
-            <view class='yuyue'>
-              <view class='yuyue-num'>{{redu}}0000</view>
-              <view class='yuyue-txt'>热度</view>
-            </view>
-          </view>
-        </view>
-
-      </image>
-    </view>
-  </view> -->
   <view class='zhuye-userinfo-con'>
     <image class='zhuye-bg' src='/images/mine-bg2.png'></image>
     <view class='image-up'>
       <view class='image-ma'>
         <view class='user-image-container'>
-          <image class='user-image' src='{{userModel.avatarUrl}}'></image>
+          <image class='user-image' src='{{authorModel.avatarUrl}}'></image>
         </view>
-        <view class='user-login-con' wx:if="{{uid==1}}">
-          <button class='user-login' open-type='getUserInfo' bindgetuserinfo='login'>登录</button>
-        </view>
-        <view wx:else bindtap='erWeiCode' class='erweima-container'>
+        <view  bindtap='erWeiCode' class='erweima-container'>
           <image class='erweima' src='/images/erweima-ico2.png'></image>
         </view>
       </view>
       <view class='user-name-container'>
-        <text class='user-name'>{{userModel.nickName}}</text>
+        <text class='user-name'>{{authorModel.nickName}}</text>
       </view>
-      <view wx:if="{{userModel.title!=null}}">
-        <text class='user-intro'>{{userModel.title}}</text>
+      <view wx:if="{{authorModel.title!=null}}">
+        <text class='user-intro'>{{authorModel.title}}</text>
       </view>
       <view wx:else>
         <text class='user-intro'>暂无简介</text>
@@ -73,7 +26,11 @@
           <text class='zuopin-name'>作品集</text>
         </view>
         <view>
-          <text class='zuopin-num'>{{redu}}</text>
+          <text class='zuopin-num'>{{authorModel.fans}}</text>
+          <text class='zuopin-name'>粉丝</text>
+        </view>
+        <view>
+          <text class='zuopin-num'>{{authorModel.redu}}</text>
           <text class='zuopin-name'>点赞</text>
         </view>
       </view>
@@ -95,28 +52,55 @@
     </view>
   </block>
 
-  <!-- <view class='yuyuedingzhi' wx:if="{{userModel.ison==1}}">
-    <button class='yuyuedingzhi-item-btn' open-type='getUserInfo' bindgetuserinfo='yuyue'>
-      <image src='/images/yuyue-ico1.png'></image>
-    </button>
-  </view> -->
-  <!-- <button class='yuyuedingzhi'>预约</button> -->
-  <!-- <loading hidden="{{hiddenLoading}}">加载中</loading> -->
-
 </view>
+<<<<<<< HEAD
+
+<view wx:if="{{!authorModel.ison}}" class='guanzhu-yuyue'>
+  <button wx:if="{{!followStatus}}" class='guanzhu' open-type='getUserInfo' bindgetuserinfo='follow'>
+    <view>
+     <image src='/images/guanzhu2.png'></image>
+    </view>
+    <text>关注</text>
+  </button>
+  <button  wx:else class='guanzhu' open-type='getUserInfo' bindgetuserinfo='follow' >
+    <view>
+      <image src='/images/yiguanzhu.png'></image>
+    </view>
+    <text>已关注</text>
+  </button>
+</view>
+
+<view wx:else class='guanzhu-yuyue'>
+  <button wx:if="{{!followStatus}}" class='guanzhu' open-type='getUserInfo' bindgetuserinfo='follow'>
+    <view>
+     <image src='/images/guanzhu2.png'></image>
+    </view>
+=======
 <!-- <view class='guanzhu-yuyue'>
-  <view class='guanzhu'>
+  <button class='guanzhu'>
     <image src='/images/guanzhu.png'></image>
     <text>关注</text>
-  </view>
+  </button>
 </view>  -->
 <view class='guanzhu-yuyue'>
-  <view class='guanzhu'>
+  <!-- <view class='guanzhu'>
+  <view>
     <image src='/images/guanzhu2.png'></image>
+     </view>
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
     <text>关注</text>
-  </view>
-   <view class='guanzhu'>
-    <image src='/images/liuyan1.png'></image>
+  </button>
+  <button  wx:else class='guanzhu' open-type='getUserInfo' bindgetuserinfo='follow'>
+    <view>
+      <image src='/images/yiguanzhu.png'></image>
+    </view>
+    <text>已关注</text>
+  </button>
+
+  <button class='guanzhu' open-type='getUserInfo' bindgetuserinfo='yuyue'>
+    <view>
+      <image src='/images/liuyan1.png'></image>
+    </view>
     <text>预约</text>
-  </view> 
+  </button> 
 </view>

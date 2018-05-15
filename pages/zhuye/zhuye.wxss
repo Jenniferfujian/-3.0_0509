@@ -91,7 +91,7 @@ color: #2b2b2b;
 .zuopin-name
 {
   color: #bfbfbf;
-  padding-right: 100rpx;
+  padding-right: 50rpx;
 }
 
 /* 下半部分 */
@@ -251,14 +251,22 @@ padding-right: 10px;
   flex-direction: row;
   align-items: center;
 
-  border-top: 1px solid #bfbfbf;
+  border-top: 1px solid #d8d8d8;
 }
 .guanzhu
 {
   display: flex;
   flex-direction: row;
   width: 50%;
-    justify-content: center;
+  justify-content: center;
+  background-color: #fff;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+button::after
+{
+  border: none;
 }
 .guanzhu image
 {

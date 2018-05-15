@@ -15,36 +15,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    home.albumList(pageSize, this.data.page, (res) => {
+    home.list(pageSize, this.data.page, (res) => {
+      console.log(res);
       this.setData({
         albumModels: res.albumModels,
         hasMore: res.hasMore,
         page: this.data.page + 1,
         hiddenLoading: true
       })
+    });
+    home.FollowListLimit((res)=>{
+     this.setData({
+       followModels:res.followModel
+     })  
     })
   },
 
   albumDetail: function (e) {
     var albumID = e.currentTarget.dataset.id;
-    wx.redirectTo({
-      url: '../editalbum/editalbum?albumID=' + albumID,
+    wx.navigateTo({
+      url: '../zydetail/zydetail?albumID=' + albumID,
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  create: function () {
-    wx.redirectTo({
-      url: '../tianjia/tianjia',
-    })
-  },
-
   onReachBottom: function () {
     this.setData({
       hiddenLoading: false
     });
-    home.albumList(pageSize, this.data.page, (res) => {
+    home.list(pageSize, this.data.page, (res) => {
       var resAlbumModels = res.albumModels;
       var albumModels = this.data.albumModels;
       resAlbumModels.forEach(function (albumModel) {
@@ -58,32 +58,6 @@ Page({
       })
     })
   },
-
-  deleteAlbum: function (e) {
-    console.log(e);
-    var albumID = e.currentTarget.dataset.id;
-    var index = e.currentTarget.dataset.index;
-    var that = this;
-    wx.showModal({
-      content: '是否删除整个相册',
-      success: function (res) {
-        if (res.confirm) {
-          home.albumDeleteAll(albumID, (res) => {
-            if (res.code == 200) {
-              var albumModels = that.data.albumModels;
-              albumModels.splice(index, 1);
-              that.setData({
-              albumModels:albumModels  
-              })
-            }
-          })
-        }
-      }
-    })
-  },
-
-
-
   onShareAppMessage: function () {
     return {
       title: "微作，让作品为自己代言",

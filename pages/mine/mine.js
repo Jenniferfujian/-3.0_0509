@@ -47,9 +47,12 @@ Page({
   edit: function () {
     var userInfo = this.data.userInfo
     wx.redirectTo({
+<<<<<<< HEAD
+      url: '../infoedit/infoedit?nickName=' + userInfo.nickName + '&title=' + userInfo.title + '&uid=' + userInfo.id,
+=======
       url: '../infoedit/infoedit?nickName=' + userInfo.nickName + '&title=' + userInfo.title + '&uid=' + userInfo.id
-
       ,
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
     })
   },
   erCode: function () {
@@ -62,6 +65,11 @@ Page({
   yveWo: function () {
     wx.navigateTo({
       url: '../yvewo/yvewo',
+    })
+  },
+  yuyuesetting:function(){
+    wx.navigateTo({
+      url: '../yuyuesetting/yuyuesetting',
     })
   },
 

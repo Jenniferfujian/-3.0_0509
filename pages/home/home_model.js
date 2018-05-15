@@ -5,9 +5,9 @@ class Home extends Base{
     super();
   }
 
-  albumList(pageSize,page,callBack) {
+  list(pageSize,page,callBack) {
     var params = {
-      url: 'user/album_list?pageSize='+pageSize+'&page='+page,
+      url: 'home/list?pageSize='+pageSize+'&page='+page,
       sCallBack: function (res) {
         callBack && callBack(res);
       },
@@ -15,19 +15,16 @@ class Home extends Base{
     this.request(params);
   }
 
-  albumDeleteAll(albumID, callBack) {
+  FollowListLimit(callBack) {
     var params = {
-      url: 'album/delete_all',
+      url: 'follow/list_limit',
       sCallBack: function (res) {
         callBack && callBack(res);
       },
-      method: "POST",
-      data: {
-        albumID: albumID
-      }
     };
     this.request(params);
   }
+
 
 }
 
