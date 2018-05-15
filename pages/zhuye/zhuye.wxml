@@ -1,5 +1,52 @@
 <!--头像 -->
 <view>
+<<<<<<< HEAD
+=======
+  <!-- <view class="personal_info ">+
+    <view>
+
+      <image class='bg' src='../../images/mine-bg1.png'>
+
+        <view class="personal_info_v1 center">
+          <image mode='aspectFill' src="{{userModel.avatarUrl}}" />
+        </view>
+
+        <view class='user-info-up'>
+
+          <view class='user-login-con' wx:if="{{uid==1}}">
+            <button class='user-login' open-type='getUserInfo' bindgetuserinfo='login'>登录</button>
+          </view>
+          <view wx:else class='user-info-detail'>
+            <view class="personal_info_name center">
+              <view class='info_name_con'>
+                <text>{{userModel.nickName}}</text>
+              </view>
+              <image class='personal_info_ma' bindtap='erWeiCode' src='/images/erweima-ico1.png'></image>
+            </view>
+            <view class='personal_info_edit center' wx:if="{{userModel.title!=null}}">
+              <text>{{userModel.title}}</text>
+            </view>
+            <view class='personal_info_edit center' wx:else>
+              <text></text>
+            </view>
+          </view>
+
+          <view class='zuopin-yuyue'>
+            <view class='zuopin'>
+              <view class='zuopin-num'>{{zpCount}}</view>
+              <view class='zuopin-txt'>作品</view>
+            </view>
+            <view class='yuyue'>
+              <view class='yuyue-num'>{{redu}}0000</view>
+              <view class='yuyue-txt'>热度</view>
+            </view>
+          </view>
+        </view>
+
+      </image>
+    </view>
+  </view> -->
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
   <view class='zhuye-userinfo-con'>
     <image class='zhuye-bg' src='/images/mine-bg2.png'></image>
     <view class='image-up'>
@@ -26,11 +73,19 @@
           <text class='zuopin-name'>作品集</text>
         </view>
         <view>
+<<<<<<< HEAD
           <text class='zuopin-num'>{{authorModel.fans}}</text>
           <text class='zuopin-name'>粉丝</text>
         </view>
         <view>
           <text class='zuopin-num'>{{authorModel.redu}}</text>
+=======
+          <text class='zuopin-num'>0</text>
+          <text class='zuopin-name'>粉丝</text>
+        </view>
+        <view>
+          <text class='zuopin-num'>{{redu}}</text>
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
           <text class='zuopin-name'>点赞</text>
         </view>
       </view>
@@ -87,20 +142,35 @@
   <view>
     <image src='/images/guanzhu2.png'></image>
      </view>
+<<<<<<< HEAD
 >>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
     <text>关注</text>
   </button>
   <button  wx:else class='guanzhu' open-type='getUserInfo' bindgetuserinfo='follow'>
+=======
+    <text>关注</text>
+  </view> -->
+  <!-- 已关注 -->
+  <button class='guanzhu'>
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
     <view>
       <image src='/images/yiguanzhu.png'></image>
     </view>
     <text>已关注</text>
   </button>
+<<<<<<< HEAD
 
   <button class='guanzhu' open-type='getUserInfo' bindgetuserinfo='yuyue'>
+=======
+  <button class='guanzhu'>
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
     <view>
       <image src='/images/liuyan1.png'></image>
     </view>
     <text>预约</text>
+<<<<<<< HEAD
   </button> 
+=======
+  </button>
+>>>>>>> 731c3fee7a54fbe088bd8ef794787ea909201c90
 </view>
