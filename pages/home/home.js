@@ -24,22 +24,38 @@ Page({
         hiddenLoading: true
       })
     });
-    home.FollowListLimit((res)=>{
-     this.setData({
-       followModels:res.followModel
-     })  
+  },
+  
+  onShow(){
+    home.FollowListLimit((res) => {
+      this.setData({
+        followModels: res.followModel
+      })
     })
   },
 
   albumDetail: function (e) {
     var albumID = e.currentTarget.dataset.id;
+    var userName = e.currentTarget.dataset.nickname;
+    var authorID = e.currentTarget.dataset.authorid;
     wx.navigateTo({
-      url: '../zydetail/zydetail?albumID=' + albumID,
+      url: '../zydetail/zydetail?albumID=' + albumID + "&userName=" + userName+'&authorID='+authorID,
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  
+  zhuYe:function(e){
+    var authorID = e.currentTarget.dataset.authorid;
+    wx.navigateTo({
+      url: '../zhuye/zhuye?uid=' +authorID ,
+    })
+  },
+  
+  myFollow:function(e){
+   wx.navigateTo({
+     url: '../myfollow/myfollow',
+   })
+  },
+
   onReachBottom: function () {
     this.setData({
       hiddenLoading: false

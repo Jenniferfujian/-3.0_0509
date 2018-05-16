@@ -1,0 +1,32 @@
+<!--pages/myfollow/myfollow.wxml-->
+<!--pages/myfollow/myfollow.wxml-->
+<view>
+  <view class='myfollow-blank'></view>
+   
+  <block wx:if="{{hasFollow}}"> 
+  <view  class='myfollow-container' wx:for="{{followModels}}" wx:key="id">
+    <view class='myfollow-item'>
+      <view class='left'>
+        <image src='{{item.followed.avatarUrl}}' mode='aspectFill' data-authorid='{{item.followed.id}}' bindtap='zhuYe'></image>
+      </view>
+      <view class='right'>
+        <text class='tittle'>{{item.followed.nickName}}</text>
+        <text class='subtittle'>{{item.followed.title}}</text>
+        <!-- <text class='subtittle'>59 粉丝</text> -->
+      </view>
+    </view>
+  </view>
+  </block>
+
+  <view wx:else class='quesheng'>
+    <view>
+      <image src='/images/quesheng.png'></image>
+    </view>
+    <view>
+      <text class='quesheng-title'>您还没有关注的人</text>
+    </view>
+    <view>
+      <text class='quesheng-subtitle'>快去发现广场逛逛吧</text>
+    </view>
+  </view>
+</view>

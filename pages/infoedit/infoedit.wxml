@@ -9,14 +9,14 @@
   <form bindsubmit='formBindSubmit'>
     <view class='zpname'>
       <text class='home_text'>昵称</text>
-      <input wx:if="{{nickName=='null'}}" class='input_name' name='nickName' placeholder='请输入昵称' value='{{nickName}}'> </input>
-      <input wx:else class='input_name' name='nickName' placeholder='请输入昵称（15字以内）' value='{{nickName}}'> </input>
+      <input wx:if="{{nickName=='null'}}" class='input_name' name='nickName' placeholder='请输入昵称' value='{{nickName}}'maxlength='15'> </input>
+      <input wx:else class='input_name' name='nickName' placeholder='请输入昵称（15字以内）' value='{{nickName}}' maxlength='20' > </input>
     </view>
 
     <view class='zpname'>
       <text class='home_text'>简介</text>
-      <input maxlength='60' wx:if="{{title=='null'}}" class='input_name' name='title' placeholder='请输入简介（15字以内）'> </input>
-      <input placeholder='请输入简介（15字以内）' maxlength='60' wx:else class='input_name' name='title' value='{{title}}'> </input>
+      <input maxlength='60' wx:if="{{title=='null'}}" class='input_name' name='title' placeholder='请输入简介（20字以内） ' maxlength='15'> </input>
+      <input placeholder='请输入简介（20字以内）' maxlength='60' wx:else class='input_name' name='title' value='{{title}}' maxlength='20'> </input>
     </view>
 
 

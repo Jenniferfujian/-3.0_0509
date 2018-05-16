@@ -2,6 +2,9 @@ page {
   background-color: #f4f4f4;
 }
 
+.body-bottom{
+ margin-bottom: 100rpx;
+}
 /* 上半部分 */
 .zhuye-userinfo-con
 {
@@ -250,7 +253,6 @@ padding-right: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-
   border-top: 1px solid #d8d8d8;
 }
 .guanzhu

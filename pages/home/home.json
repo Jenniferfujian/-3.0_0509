@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "微作"
+  "navigationBarTitleText": "微作",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fe5454",
+        "navigationBarTextStyle": "white"
 }

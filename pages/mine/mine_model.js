@@ -13,20 +13,6 @@ class Mine extends Base {
     };
     this.request(params);
   }
-
-  infoSave(userInfo,callBack) {
-    var params = {
-      url: 'user/info_save?XDEBUG_SESSION_START=12672',
-      sCallBack: function (res) {
-        callBack && callBack(res);
-      },
-      method:'POST',
-      data:{
-        userInfo:userInfo
-      }
-    };
-    this.request(params);
-  }
    
   yuyueSwitch(isOn,callBack) {
     var params = {
@@ -34,6 +20,24 @@ class Mine extends Base {
       sCallBack: function (res) {
         callBack && callBack(res);
       },
+    };
+    this.request(params);
+  }
+
+  encrypt(encryptedData, iv, callBack, fcallBack) {
+    var params = {
+      url: 'user/encrypt_user_info',
+      sCallBack: function (res) {
+        callBack && callBack(res);
+      },
+      fCallBack: function (res) {//失败的回调函数
+        fcallBack && fcallBack(res);
+      },
+      method: 'POST',
+      data: {
+        encryptedData: encryptedData,
+        iv: iv
+      }
     };
     this.request(params);
   }

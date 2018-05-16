@@ -128,3 +128,30 @@ page {
   vertical-align: middle;
   text-align: center;
 }
+button::after
+{
+  border: none;
+}
+
+.quesheng{
+  margin: 0 auto;
+}
+.quesheng image{
+  padding-top: 196rpx;
+  width: 358rpx;
+  height: 327rpx;
+}
+.quesheng-title{
+  display: block;
+  padding-top:160rpx;
+  padding-bottom: 30rpx;
+  font-size: 34rpx;
+  color: #333333; 
+  text-align: center;
+}
+.quesheng-subtitle{
+  display: block;
+  font-size: 30rpx;
+    text-align: center;
+    color: #888888;
+}

@@ -8,6 +8,7 @@ Page({
    */
   data: {
     text:"预约详情",
+    hasOrder:true,
     hiddenLoading:false,
     page:1
   },
@@ -23,7 +24,7 @@ Page({
       var length=res.orders.length;
       if(length==0){
        this.setData({
-         text:"暂未收到预约,快去分享自己的作品吧"
+         hasOrder:false
        })  
       }
       this.setData({

@@ -1,7 +1,7 @@
 <view class='my-follow'>
   <view class='follow-top'>
     <text class='my-follow-text'>我的关注</text>
-    <view>
+    <view bindtap='myFollow' >
       <text class='my-follow-text'>全部</text>
       <image class='follow-jiantou' src='/images/mine-jiantou.png'></image>
     </view>
@@ -10,7 +10,7 @@
     <view class='follow-image-container'>
       <block wx:for="{{followModels}}" wx:key="id" >
       <view class='follow-image'>
-        <image src='{{item.followed.avatarUrl}}'></image>
+        <image src='{{item.followed.avatarUrl}}' mode='aspectFill' bindtap='zhuYe' data-authorid='{{item.followed.id}}' ></image>
         <view class='follow-image-name'>
           <text>{{item.followed.nickName}}</text>
         </view>
@@ -25,12 +25,12 @@
     <view class='zhuye-works-items'>
       <view class='zhuye-works-user'>
         <view>
-          <image src='{{item.owner.avatarUrl}}'></image>
+          <image src='{{item.owner.avatarUrl}}' mode='aspectFill' data-authorid='{{item.owner.id}}' bindtap='zhuYe' ></image>
         </view>
         <text>{{item.owner.nickName}}</text>
       </view>
       <view class='works-img-con'>
-        <image mode='widthFix' class='zhuye-works-img' src="{{item.head_url}}" bindtap='albumDetail' data-id="{{item.id}}"></image>
+        <image mode='widthFix' class='zhuye-works-img' src="{{item.head_url}}" bindtap='albumDetail' data-id="{{item.id}}" data-nickname='{{item.owner.nickName}}' data-authorid='{{item.owner.id}}' ></image>
       </view>
       <view class='zhuye-works-txt'>
         <text class='zhuye-works-title'>{{item.title}}</text>

@@ -24,6 +24,8 @@ Page({
       zhuYe.info((res)=>{//判断当前用户是不是该页面的作者
         if(authorID==res.uid){
           app.globalData.isAuthor = true;
+        }else{
+          app.globalData.isAuthor=false;
         }
       }) 
       zhuYe.zhuYeInitial(authorID,(res)=>{
@@ -37,19 +39,11 @@ Page({
   },
   
   onShow:function(){
-    var authorID=this.data.uid;
-    if(authorID){
-     zhuYe.redu(authorID,(res)=>{
-       console.log(res);
-       this.setData({
-       redu:res.redu
-      })
-     });
-    }
+
   },
 
-  zhuYeData:function(uid){
-    zhuYe.zhuYeAlbum(uid, pageSize, this.data.page, (res) => {
+  zhuYeData:function(authorID){
+    zhuYe.zhuYeAlbum(authorID, pageSize, this.data.page, (res) => {
       console.log(res);
       this.setData({
         albumModels: res.albumModels,
@@ -61,10 +55,10 @@ Page({
 
   onShareAppMessage: function () {//设置分享页面的信息
     var userName = this.data.authorModel.nickName
-    var uid = this.data.uid;
+    var authorID = this.data.authorID;
     return {
       title: userName + '的作品集',
-      path: 'pages/zhuye/zhuye?uid=' + uid
+      path: 'pages/zhuye/zhuye?uid=' + authorID
     }
   },
 
@@ -72,7 +66,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     var userName = this.data.authorModel.nickName;
     wx.navigateTo({
-      url: '../zydetail/zydetail?albumID=' + id + '&userName=' + userName+'&authorID='+this.data.uid,
+      url: '../zydetail/zydetail?albumID=' + id + '&userName=' + userName+'&authorID='+this.data.authorID,
     })
   },
 
@@ -87,7 +81,7 @@ Page({
   yuyue: function (event) {
     this.wxGetUserInfo(event, (res) => {
       wx.navigateTo({
-        url: '../yuyue/yuyue?sellerID=' + this.data.uid + '&nickName=' + res,
+        url: '../yuyue/yuyue?sellerID=' + this.data.authorID + '&nickName=' + res,
       })
     });
   },
@@ -95,6 +89,7 @@ Page({
   
   follow:function(event){
     var that = this;
+    console.log(app.globalData.isAuthor);
     if (app.globalData.isAuthor){
       var followStatus = !that.data.followStatus; 
       that.setData({
@@ -121,7 +116,7 @@ Page({
       this.setData({
         hiddenLoading: false
       })
-      zhuYe.zhuYe(this.data.uid, pageSize, this.data.page, (res) => {
+      zhuYe.zhuYeAlbum(this.data.authorID, pageSize, this.data.page, (res) => {
         var resAlbumModels = res.albumModels;
         var albumModels = this.data.albumModels;
         resAlbumModels.forEach(function (albumModel) {
@@ -139,7 +134,7 @@ Page({
 
   erWeiCode:function() {//点击二维码小图标
     wx.navigateTo({
-      url: '../ercode/ercode?uid=' + this.data.uid
+      url: '../ercode/ercode?uid=' + this.data.authorID
     })
   },
   
@@ -159,23 +154,13 @@ Page({
       })
     } else {
       var that = this;
-      if (!app.globalData.loginStatus){
+      if (app.globalData.loginStatus){
       zhuYe.encrypt(event.detail.encryptedData, event.detail.iv,
         (res) => {
-          console.log(app.globalData.loginStatus + '' + app.globalData.isAuthor )
-          var uid = res.user.id;
-          if (app.globalData.isAuthor ) {
-            that.setData({
-              page: 1,
-            })
-            that.zhuYeData(uid);
-          }
-          if (res.code == 201) {
-            wx.setStorageSync('token', res.token);
-            wx.setStorageSync('loginStatus', res.loginStatus);
-            app.globalData.loginStatus = wx.getStorageSync('loginStatus');
-          }
-          callBack && callBack();
+          wx.setStorageSync('token', res.token);
+          wx.setStorageSync('loginStatus', res.loginStatus);
+          app.globalData.loginStatus = wx.getStorageSync('loginStatus');
+          callBack && callBack(res.userModel.nickName);
         },
         (res) => {
           console.log(res);
